@@ -19,6 +19,7 @@ AI Models:
 - Quantum Approximate Optimization Algorithm (QAOA) for real-time task allocation and trust-aware path planning.
 - TIP and ECT trust updates embedded in a live knowledge graph (robots, tasks, sensors, humans).
 - Autoencoders/anomaly detection models to identify compromised data flows or adversarial manipulation.
+
 Tools and Libraries:
 - Qiskit for QAOA and other quantum needs.
 - PyTorch for developing and training classical machine learning models like GNNs or autoencoders.
