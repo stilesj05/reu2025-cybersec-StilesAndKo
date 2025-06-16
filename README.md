@@ -1,5 +1,5 @@
 # reu2025-cybersec-StilesAndKo
-# Quantum-Enhanced Graph Optimization for Trustworthy Multi-Agent Coordination in Digital Twin Robotics
+# Quantum-Enhanced Knowledge Graphs and Optimization for Trustworthy Multi-Agent Coordination in Digital Twin Robotics
 
 ## Students
 - Joseph Ko  
@@ -15,7 +15,18 @@ Real-time digital twins mirror physical robots and environments but introduce ne
 
 We are integrating models such as...
 
-## Tools and Models Used
-
+## Tools and Models Used:
+AI Models:
+- Graph Neural Networks (GNNs) for modeling complex relationships between robots, environments, and tasks within dynamic knowledge graphs.
+- Quantum Approximate Optimization Algorithm (QAOA) for real-time task allocation and trust-aware path planning.
+- TIP and ECT trust updates embedded in a live knowledge graph (robots, tasks, sensors, humans).
+- Autoencoders/anomaly detection models to identify compromised data flows or adversarial manipulation.
+Tools and Libraries:
+- Qiskit for QAOA and other quantum needs.
+- PyTorch for developing and training classical machine learning models like GNNs or autoencoders.
+- Hugging Face Transformers for integrating LLM -based reasoning into agent decisions or knowledge graph summarization.
+- NetworkX/DGL for graph-based modeling of robots, environments, and trust relationships.
+- Digital Twin Platforms (simulation, Unity3D specifically) to represent the physical-virtual interaction part of this project.
 
 ## Setup Instructions
+- TBD
