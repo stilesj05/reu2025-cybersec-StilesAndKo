@@ -1,5 +1,5 @@
 # reu2025-cybersec-StilesAndKo
-# Quantum-Enhanced Knowledge Graphs and Optimization for Trustworthy Multi-Agent Coordination in Digital Twin Robotics
+#  Post-Disaster Hospital Simulation with Digital Twins and Adaptive Task Allocation
 
 ## Students
 - Joseph Ko  
@@ -9,24 +9,37 @@
 - Yugyung Lee  
 
 ## Project Summary
-This project explores how quantum-enhanced graph optimization and dynamic trust modeling can improve the safety and efficiency of multi-agent coordination in robotics systems that rely on digital twins.  
+In emergency scenarios like post-earthquake hospital rescues, robotic agents must coordinate tasks such as triage, transport, and supply delivery in real time under uncertain, hazardous conditions. These scenarios demand not only rapid decision-making but also resilience to changing environments, incomplete information, and varying levels of agent reliability.  
+To address these challenges, digital twins—virtual replicas of physical agents and environments—can serve as a central coordination layer by enabling real-time monitoring, planning, and anomaly detection. However, effectively using digital twins for multi-agent task allocation requires optimizing across complex, dynamic constraints such as trust levels, blocked routes, and patient urgency.  
+This project investigates how quantum-enhanced graph optimization (via QUBO modeling) can improve digital twin-assisted coordination in a simulated rescue setting. The aim is to evaluate whether quantum-inspired methods can outperform classical task allocation strategies when trust, uncertainty, and environmental risk are encoded as graph attributes.
 
-Real-time digital twins mirror physical robots and environments but introduce new cybersecurity risks such as sensor spoofing, message tampering, and desynchronization attacks. Our goal is to build an AI-enhanced, trust-aware system that detects and responds to such attacks, ensuring safe collaboration between humans and robot teams in dynamic environments.
+**Hypotheses:**
+- Trust-aware task assignment using quantum graph optimization will yield higher task completion rates (under time and safety constraints) than random or greedy allocation strategies in a simulated rescue scenario.
+- Digital twin models updated with real-time trust and environmental feedback will outperform static digital twin models in dynamic path planning tasks.
+
+**Research Questions:**
+- RQ1: How can agent trust levels, task urgency, and environmental risks be modeled as a weighted graph suitable for QUBO formulation?
+- RQ2: Does using quantum-inspired optimization (e.g., Max-Cut or QAOA over a task-agent graph) improve task allocation efficiency in real-time rescue simulations?
+- RQ3: How does integrating a dynamic digital twin (updated with real-time data) affect the adaptability and performance of agent coordination in changing environments?
+
+---
 
 ## Tools and Models Used:
 AI Models:
-- Graph Neural Networks (GNNs) for modeling complex relationships between robots, environments, and tasks within dynamic knowledge graphs.
-- Quantum Approximate Optimization Algorithm (QAOA) for real-time task allocation and trust-aware path planning.
-- TIP and ECT trust updates embedded in a live knowledge graph (robots, tasks, sensors, humans).
-- Autoencoders/anomaly detection models to identify compromised data flows or adversarial manipulation.
+- Graph Neural Networks (GNNs) → (Planned) For learning dynamic trust and task relationships in the knowledge graph
+- Quantum Optimization Algorithms
+  - QUBO formulations → To encode task allocation & routing as binary optimization problems
+  - QAOA → For near-optimal task allocation and routing under trust and risk constraints
+  - Quantum Annealing → For solving QUBO models efficiently
+- Autoencoders (Planned) → For anomaly detection in digital twin sensor data
 
 Tools and Libraries:
-- Qiskit for QAOA and other quantum needs.
-- PyTorch for developing and training classical machine learning models like GNNs or autoencoders.
-- Hugging Face Transformers for integrating LLM -based reasoning into agent decisions or knowledge graph summarization.
-- NetworkX/DGL for graph-based modeling of robots, environments, and trust relationships.
-- Digital Twin Platforms (simulation, Unity3D specifically) to represent the physical-virtual interaction part of this project.
-
+- Neo4j → Knowledge graph modeling of agents, tasks, environment, trust
+- NetworkX → Synthetic graph generation for quantum optimization testing
+- Qiskit / D-Wave Ocean SDK → Quantum optimization and simulation
+- PyTorch → Planned for trust score learning and anomaly detection models
+- Gymnasium → Reinforcement learning for agent behavior testing
+  
 ## Notes on Reproduced Work
 
 Model Name: Automatic Mask Generator (based on Segment Anything)
@@ -34,31 +47,35 @@ Model Name: Automatic Mask Generator (based on Segment Anything)
 Source:  
 Barsellotti, Luca, et al. “Personalized Instance-Based Navigation toward User-Specific Objects in Realistic Environments.” Advances in Neural Information Processing Systems, vol. 37, 16 Dec. 2024, pp. 11228–11250, https://arxiv.org/pdf/2410.18195. Accessed 15 June 2025.
 
-Implementation Process:
+Implementation Environment:
 
-- Forked the Official Github repository, and used the Segment Anything model in Google Colab.
-- Loaded the pretrained Segment Anything model (ViT-H variant).
-- Used the SamAutomaticMaskGenerator to generate masks from input images.
-- No major code changes were made to the original repository aside from adapting it to a test image for demonstration.
+- OS: macOS Sonoma
+- Python 3.9 (in venv)
+- CPU-only machine
+- Key dependencies: torch, torchvision, pillow
 
-Environment:
+Checkpoint Adaptation:
+- Used smaller ViT-B checkpoint (~420MB) due to GitHub size constraints
+- Checkpoint retrieved via `curl`
 
-- Python 3.9
-- PyTorch
-- Torchvision
-- Segment-anything
+Demo:
+- Loaded SAM ViT-B checkpoint and generated 26 object masks on a 320×240 JPEG
+- Runtime: ~0.5s per image (CPU)
+- Qualitative results show accurate object boundary segmentation
 
-Evaluation:
+Comparison:
 
-- Successfully reproduced the functionality of the SOTA model on a test image.
-- The model generated masks accurately and rapidly, validating its zero-shot capability to segment novel objects without task-specific training.
-- However, the “happy medium” of masks is unknown, as too many masks creates too many objects and does not accurately represent the environment, and too few masks has a similar problem; the only difference is that it captures too few objects, not too many.
+| Feature     | SAM ViT-H (GPU) | SAM ViT-B (CPU) |
+|-------------|------------------|------------------|
+| Model size  | ~2.6 GB          | ~420 MB          |
+| Speed       | ~0.05s/image     | ~0.5s/image      |
+| Mask count  | Hundreds+        | 26               |
 
-Our Own Approach:
+Outcome:
+- Despite lower performance, the ViT-B version was sufficient for prototype use in segmentation
+- Sets a functional baseline for integrating vision into rescue simulation pipeline
 
-- As of now, we have only reproduced the baseline SOTA model.
-- While we haven’t built our own segmentation model yet, this reproduction sets a strong and reliable starting point to improving mask generation.
-- Our next steps would be to figure out if we can find out the “happy medium” of mask generation, and maybe find a way to use AI/Quantum AI to improve the accuracy of the mask generation to more accurately represent the objects in the room.
+---
 
-## Setup Instructions
-- TBD
+### Setup Instructions
+**TBD**
